@@ -22,7 +22,7 @@ namespace Store.Tests.Domain
         _discount = new Discount(10, DateTime.Now.AddDays(5));
     }
 
-    [TestMethod]
+    [TestMethod] 
     [TestCategory("Domain")]
     public void Should_Return_Sucess_Had_Active_Order()
     {

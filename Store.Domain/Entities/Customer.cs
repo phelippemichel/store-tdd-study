@@ -12,3 +12,5 @@ namespace Store.Domain.Entities
         public string Email { get; private set; }
     }
 }
+
+test
