@@ -53,7 +53,7 @@ namespace Store.Domain.Entities
         public void Pay(decimal amount)
         {
             if (amount == Total())
-                Status = EOrderStatus.WaitingDelivery;
+                this.Status = EOrderStatus.WaitingDelivery;
         }
 
         public void Cancel()
