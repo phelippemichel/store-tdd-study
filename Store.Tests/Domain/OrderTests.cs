@@ -46,13 +46,13 @@ namespace Store.Tests.Domain
             Assert.AreEqual(order.Status, EOrderStatus.Canceled);
         }
 
-        // [TestMethod]
-        // [TestCategory("Domain")]
-        // public void Should_Return_Sucess_When_Add_Item_Nothing_Product()
-        // {
-        //     var order = new Order(_customer, 0, null);
-        //     order.AddItem(null, 10);
-        //     Assert.AreEqual(Order.Items.Count, 0);
-        // }
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Error_When_Add_Item_Nothing_Product()
+        {
+            var order = new Order(_customer, 0, null);
+            order.AddItem(null, 10);       
+            Assert.AreEqual(order.Items.Count, 0);
+        }
     }
 }
