@@ -54,5 +54,60 @@ namespace Store.Tests.Domain
             order.AddItem(null, 10);       
             Assert.AreEqual(order.Items.Count, 0);
         }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Total_Is_50()
+        {
+            var order = new Order(_customer, 10, _discount);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 50);
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Total_Is_60()
+        {
+            var expiredDiscount = new Discount(10, DateTime.Now.AddDays(-5));
+            var order = new Order(_customer, 10, expiredDiscount);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 60);
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Discount_Invalid_Total_Is_60()
+        {
+            var order = new Order(_customer, 10, null);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 60);
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Discount_of_10_the_value_of_the_order_should_be_50()
+        {
+            var order = new Order(_customer, 10, _discount);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(order.Total(), 50);
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Fee_10_Value_Total_Is_60()
+        {
+            var order = new Order(_customer, 10, _discount);
+            order.AddItem(_product, 6);
+            Assert.AreEqual(order.Total(), 60);
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Customer_Is_Invalid()
+        {
+            var order = new Order(null, 10, _discount);
+            order.AddItem(_product, 6);
+            Assert.AreEqual(order.IsValid, false);
+        }
     }
 }
