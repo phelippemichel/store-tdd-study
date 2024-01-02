@@ -101,13 +101,21 @@ namespace Store.Tests.Domain
             Assert.AreEqual(order.Total(), 60);
         }
 
-        // [TestMethod]
-        // [TestCategory("Domain")]
-        // public void Should_Return_Sucess_When_Customer_Is_Invalid()
-        // {
-        //     var order = new Order(null, 10, _discount);
-        //     order.AddItem(_product, 6);
-        //     Assert.AreEqual(order.IsValid, false);
-        // }
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Customer_Is_Invalid()
+        {
+            var order = new Order(null, 10, _discount);
+            order.AddItem(_product, 6);
+            Assert.AreEqual(order.IsValid, false);
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Should_Return_Sucess_When_Order_Withoud_Customer_Is_Invalid()
+        {
+            var order = new Order(null, 10, _discount);
+            Assert.AreEqual(order.IsValid, false);
+        }
     }
 }
