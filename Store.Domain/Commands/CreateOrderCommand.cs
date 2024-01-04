@@ -28,8 +28,8 @@ namespace Store.Domain.Commands
         {
             AddNotifications(new Contract<CreateOrderCommand>()
                 .Requires()
-                .IsTrue(Customer.Length == 11, "Customer", "Customer invalid")
-                .IsTrue(ZipCode.Length == 8, "ZipCode", "ZipCode invalid")
+                // .IsTrue(Customer.Length == 11, "Customer", "Customer invalid")
+                .IsTrue(ZipCode.Length == 1, "ZipCode", "ZipCode invalid")
             );
         }
     }
